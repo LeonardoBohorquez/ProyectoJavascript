@@ -93,7 +93,7 @@ while(filtro === true){
         return objeto.nombre.startsWith(filtrar);
     });
     
-    console.log("Filtrado por nombre:");
+    console.log("Filtrado por nombre: " + filtrar);
     console.log(filtradoPorNombre);
 
     filtro = confirm('¿Quieres filtrar nuevamente?')
