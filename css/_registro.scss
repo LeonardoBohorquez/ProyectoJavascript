@@ -1,0 +1,59 @@
+.cuadro-registro{
+    z-index: -1;
+    background-color: rgb(241, 243, 243);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.formulario-registro{
+    width: 350px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 0px 1px 0px;
+    .grupo-input{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0px 0px 1px 0px;
+        .usuario, .contraseña{
+            border: 0;
+            font-size: 16px;
+            background-color: transparent;
+            &:focus{
+                outline: none;
+            }
+        }
+    }
+}
+.titulo-registro{
+    color: gray;
+    font-size: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.registrar{
+    border: 0;
+    width: 100%;
+    padding: 15px;
+    color: #fff;
+    cursor: pointer;
+    background-color: rgb(0, 109, 211);
+}
+.volver{
+    cursor: pointer;
+    color: gray;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 15px;
+}
+.visible{
+    z-index: 0 !important;
+}
+
