@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     //Guardamos el array en el sessionStore en formato JSON string
     sessionStorage.setItem('inventario', JSON.stringify(inventario));
-    // Limpiamos el contenido existente en el main
+    //Limpiamos el contenido existente en el main
     main.innerHTML = ''; 
     //Recuperamos el array del session Store en JSON pero lo transformamos nuevamente en un objeto
     let storedInventario = JSON.parse(sessionStorage.getItem('inventario'));
