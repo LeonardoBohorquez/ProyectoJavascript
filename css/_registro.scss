@@ -1,3 +1,9 @@
+
+.mensaje-dos{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
 .cuadro-registro{
     z-index: -1;
     background-color: rgb(241, 243, 243);
@@ -7,6 +13,7 @@
     bottom: 0;
     left: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

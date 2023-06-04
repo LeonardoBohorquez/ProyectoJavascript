@@ -5,11 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
-    <button id="crear-elemento">Crear Elemento</button>
-<div id="contenedor"></div>
-
+    <header class="header" id="header">
+        <nav class="nav" id="nav">
+            <ul class="menu" id="menu">
+                <li><button class="boton-registro" id="boton-registro">Registrar Item</button></li>
+                <li><button class="boton-buscar" id="boton-buscar">Buscar Item</button></li>
+            </ul>
+        </nav>
+    </header>
+    <form onsubmit="event.preventDefault();" action="" id="formulario-item" class="formulario-item">
+        <h2 class="titulo-formulario">Registro de item</h2>
+        <input type="text" id="nombre-item" class="nombre-item" placeholder="Nombre del item">
+        <input type="number" id="precio-item" class="precio-item" placeholder="Precio del item">
+        <input type="number" id="cantidad-item" class="cantidad-item" placeholder="Cantidad del item">
+        <input type="submit" class="guardar" id="guardar" value="Guardar">
+        <button class="cerrar" id="cerrar">Cerrar</button>
+    </form>
+    <div class="contenedor">
+        <main class="main" id="main">
+       
+        </main>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>

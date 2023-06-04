@@ -10,17 +10,17 @@ body {
   display: flex;
 }
 
-.img {
-  width: 45%;
-  height: 100vh;
-  background-image: url(../img/fondo.jpg);
-  background-size: cover;
+.mensaje {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .cuadro {
   width: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: rgb(241, 243, 243);
@@ -74,6 +74,12 @@ body {
   margin-bottom: 15px;
 }
 
+.mensaje-dos {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .cuadro-registro {
   z-index: -1;
   background-color: rgb(241, 243, 243);
@@ -83,6 +89,7 @@ body {
   bottom: 0;
   left: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -136,4 +143,103 @@ body {
 
 .visible {
   z-index: 0 !important;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  box-shadow: 0px 0px 1px 0px;
+  margin-bottom: 20px;
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.menu li {
+  list-style: none;
+}
+
+.boton-registro, .boton-buscar {
+  border: 0;
+  margin: 10px;
+  padding: 15px;
+  color: white;
+  background-color: none;
+  background-color: rgb(0, 109, 211);
+}
+.boton-registro:hover, .boton-buscar:hover {
+  cursor: pointer;
+}
+
+.formulario-item {
+  z-index: 1;
+  padding: 10px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 1px 0px;
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 1s;
+  background-color: rgb(0, 109, 211);
+}
+.formulario-item .titulo-formulario {
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.formulario-item input, .formulario-item .cerrar {
+  border: 0;
+  padding: 5px;
+  box-shadow: 0px 0px 1px 0px;
+  margin-bottom: 10px;
+}
+.formulario-item input:focus, .formulario-item .cerrar:focus {
+  outline: none;
+}
+.formulario-item .cerrar {
+  margin-bottom: 0;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: center;
+}
+.contenedor .main {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+.contenedor .main .item {
+  width: 400px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0px 0px 1px 0px;
+}
+.contenedor .main .item .titulo-item {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.contenedor .main .item p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.contenedor .main .item .eliminar {
+  border: 0;
+  padding: 10px;
+  color: white;
+  background-color: red;
+}
+.contenedor .main .item .eliminar:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=estilos.css.map */
