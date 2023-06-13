@@ -24,9 +24,9 @@ function crearItems (){
   formularioItem.addEventListener('submit', (e) =>{
     e.preventDefault();
 
-    const nombreItem = e.target.children['nombre-item'].value.toUpperCase();
-    const precioItem = e.target.children['precio-item'].value
-    const cantidadItem = e.target.children['cantidad-item'].value
+    const nombreItem    = e.target.children['nombre-item'].value.toUpperCase();
+    const precioItem    = e.target.children['precio-item'].value
+    const cantidadItem  = e.target.children['cantidad-item'].value
     const item = {
       id,
       nombreItem,
@@ -43,6 +43,15 @@ function crearItems (){
       formularioItem.reset();
       InventarioLocalStore();
       mostrarItems();
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Item creado exitosamente',
+        showConfirmButton: false,
+        confirmButtonColor: '#3085d6',
+        timer: 1500
+      })
+
     }
 
    const primerInput = document.getElementById('nombre-item')
@@ -103,7 +112,7 @@ function eliminarTodo(){
                 numeroItems()
                 Swal.fire({
                   title:'BORRADO',
-                  txt:'Todo el inventario se ha borrado',
+                  text:'Todo el inventario se ha borrado',
                   icon:'success',
                   confirmButtonColor: '#3085d6',
                 })
@@ -117,19 +126,30 @@ function eliminarTodo(){
           }
           })
 }
-function buscarItem(){
-
-  const btnBuscar = document.getElementById('boton-buscar')
-
-        btnBuscar.addEventListener('click', function(){
-  
-          const buscar = prompt('Introduzca el nombre del item a buscar').toUpperCase()
-          const buscando = inventario.filter(item => item.nombreItem.startsWith(buscar))
-          
-          if(buscando.length > 0){
-            console.log(buscando)
-            contendorItems.innerHTML = '';
-            buscando.forEach((item, index) => {
+function buscarItem() {
+  const btnBuscar = document.getElementById('boton-buscar');
+  btnBuscar.addEventListener('click', function() {
+    Swal.fire({
+      title: 'Nombre del item a buscar',
+      input: 'text',
+      confirmButtonText: 'Buscar',
+      confirmButtonColor: 'green',
+      cancelButtonText:'Cancelar',
+      cancelButtonColor: 'red',
+      showCancelButton: true,
+      inputValidator: (value) => {
+        if (!value) {
+          return 'Debes ingresar algo';
+        }
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const buscar = result.value.toUpperCase();
+        const buscando = inventario.filter(item => item.nombreItem.startsWith(buscar));
+        if (buscando.length > 0) {
+          console.log(buscando);
+          contendorItems.innerHTML = '';
+          buscando.forEach((item, index) => {
             contendorItems.innerHTML += 
               `
                 <div class="item">
@@ -139,12 +159,17 @@ function buscarItem(){
                   <p><strong>Precio total registrado: </strong>${item.PrecioInventario}$</p>
                   <button type="button" class="eliminar" onclick="eliminarItem(${index})">Eliminar</button>
                 </div>
-              `
-    })
-          }else{
-            alert('no se encontro nada')
-          }
-        })
+              `;
+          });
+        } else {
+          Swal.fire({
+            title: 'No se encontro nada con el nombre indicado',
+            confirmButtonColor: '#3085d6',
+          });
+        }
+      }
+    });
+  });
 }
 
 animacionRegistro()

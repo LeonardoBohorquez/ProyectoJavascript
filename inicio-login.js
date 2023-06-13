@@ -23,6 +23,7 @@ function registro() {
         Swal.fire({
           icon: 'error',
           title: 'Complete los campos',
+          confirmButtonColor: '#3085d6',
         })
         return;
       }
@@ -31,6 +32,7 @@ function registro() {
         Swal.fire({
           icon: 'error',
           title: 'Las contraseñas no coinciden',
+          confirmButtonColor: '#3085d6',
         })
         return;
       }
@@ -48,6 +50,7 @@ function registro() {
         icon: 'success',
         title: 'Usuario creado exitosamente',
         showConfirmButton: false,
+        confirmButtonColor: '#3085d6',
         timer: 2000
       })
         console.log(usuarios);
@@ -91,6 +94,7 @@ function login(){
             Swal.fire({
               icon: 'error',
               title: 'Complete los campos',
+              confirmButtonColor: '#3085d6',
             })
             return;
           }
@@ -107,6 +111,7 @@ function login(){
             Swal.fire({
               icon: 'error',
               title: 'El usuario no existe',
+              confirmButtonColor: '#3085d6',
             })
             formulario.reset();
           }
