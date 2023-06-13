@@ -11,9 +11,13 @@ body {
 }
 
 .mensaje {
+  color: white;
+  padding: 25px;
   width: 100%;
   text-align: center;
   margin-bottom: 20px;
+  position: absolute;
+  top: 0;
 }
 
 .cuadro {
@@ -76,8 +80,12 @@ body {
 
 .mensaje-dos {
   width: 100%;
+  padding: 25px;
+  color: white;
   text-align: center;
   margin-bottom: 20px;
+  position: absolute;
+  top: 0;
 }
 
 .cuadro-registro {
@@ -165,16 +173,44 @@ body {
   list-style: none;
 }
 
-.boton-registro, .boton-buscar {
+.boton-registro, .boton-buscar, .eliminar-todo, .mostrar-todo {
   border: 0;
   margin: 10px;
   padding: 15px;
   color: white;
-  background-color: none;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.boton-registro:hover, .boton-buscar:hover, .eliminar-todo:hover, .mostrar-todo:hover {
+  cursor: pointer;
+}
+
+.boton-registro {
+  background-color: green;
+}
+.boton-registro:hover {
+  background-color: rgb(1, 75, 1);
+}
+
+.mostrar-todo {
   background-color: rgb(0, 109, 211);
 }
-.boton-registro:hover, .boton-buscar:hover {
-  cursor: pointer;
+.mostrar-todo:hover {
+  background-color: rgb(1, 86, 165);
+}
+
+.eliminar-todo {
+  background-color: red;
+}
+.eliminar-todo:hover {
+  background-color: rgb(116, 0, 0);
+}
+
+.boton-buscar {
+  background-color: rgb(211, 120, 0);
+}
+.boton-buscar:hover {
+  background-color: rgb(160, 109, 1);
 }
 
 .formulario-item {
@@ -189,7 +225,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
   transition: all 1s;
-  background-color: rgb(0, 109, 211);
+  background-color: green;
 }
 .formulario-item .titulo-formulario {
   color: white;
@@ -205,8 +241,9 @@ body {
 .formulario-item input:focus, .formulario-item .cerrar:focus {
   outline: none;
 }
-.formulario-item .cerrar {
-  margin-bottom: 0;
+.formulario-item .cerrar:hover, .formulario-item .guardar:hover {
+  cursor: pointer;
+  background-color: rgb(202, 201, 201);
 }
 
 .contenedor {
@@ -242,4 +279,11 @@ body {
 }
 .contenedor .main .item .eliminar:hover {
   cursor: pointer;
+}
+
+.numero-item {
+  width: 100%;
+  color: gray;
+  font-size: 45px;
+  text-align: center;
 }/*# sourceMappingURL=estilos.css.map */

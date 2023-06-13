@@ -6,29 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
 </head>
 <body>
     <header class="header" id="header">
         <nav class="nav" id="nav">
             <ul class="menu" id="menu">
-                <li><button class="boton-registro" id="boton-registro">Registrar Item</button></li>
-                <li><button class="boton-buscar" id="boton-buscar">Buscar Item</button></li>
+                <li><button type="button" class="mostrar-todo" id="mostrar-todo">Mostrar todo</button></li>
+                <li><button type="button" class="boton-registro" id="boton-registro">Registrar Item</button></li>
+                <li><button type="button" class="boton-buscar" id="boton-buscar">Buscar Item</button></li>
+                <li><button type="button" class="eliminar-todo" id="eliminar-todo">Eliminar todo</button></li>
             </ul>
         </nav>
     </header>
-    <form onsubmit="event.preventDefault();" action="" id="formulario-item" class="formulario-item">
+    <form id="formulario-item" class="formulario-item">
         <h2 class="titulo-formulario">Registro de item</h2>
-        <input type="text" id="nombre-item" class="nombre-item" placeholder="Nombre del item">
-        <input type="number" id="precio-item" class="precio-item" placeholder="Precio del item">
-        <input type="number" id="cantidad-item" class="cantidad-item" placeholder="Cantidad del item">
+        <input type="text" id="nombre-item" class="nombre-item" placeholder="Nombre del item" name="nombre-item" required>
+        <input type="number" id="precio-item" class="precio-item" placeholder="Precio del item" name="precio-item" required>
+        <input type="number" id="cantidad-item" class="cantidad-item" placeholder="Cantidad del item" name="cantidad-item" required>
         <input type="submit" class="guardar" id="guardar" value="Guardar">
-        <button class="cerrar" id="cerrar">Cerrar</button>
+        <button type="button"class="cerrar" id="cerrar">Cerrar</button>
     </form>
+    <h2 class="numero-item">Items en inventario: <span id="numero-item"></span></h2>
     <div class="contenedor">
-        <main class="main" id="main">
-       
+        <main class="main" id="contenedor-items">
+    
         </main>
     </div>
     <script src="main.js"></script>
 </body>
-</html>
+</html> 
