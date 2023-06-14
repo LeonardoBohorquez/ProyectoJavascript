@@ -14,8 +14,8 @@ function registro() {
     let mensajeDos          = document.getElementById('mensaje-dos');
     let formularioRegistro  =  document.getElementById('formulario-registro')
     //Evento en el boton de registrar
-    btnRegistrar.addEventListener('submit', function(event) {
-      event.preventDefault();
+    formularioRegistro.addEventListener('submit', function(e) {
+      e.preventDefault();
       let registroUsuarioValor    = registroUsuario.value.trim();
       let registroContraseñaValor = registroContraseña.value.trim();
       let repetirContraseñaValor  = repetirContraseña.value.trim();
