@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "id": 0,
+      "nombreItem": "TELEVISION",
+      "precioItem": 50,
+      "cantidadItem": 5,
+      "PrecioInventario": 250
+    },
+    {
+      "id": 1,
+      "nombreItem": "MESA",
+      "precioItem": 10,
+      "cantidadItem": 5,
+      "PrecioInventario": 50
+    },
+    {
+      "id": 2,
+      "nombreItem": "SILLA",
+      "precioItem": 5,
+      "cantidadItem": 10,
+      "PrecioInventario": 50
+    },
+    {
+      "id": 3,
+      "nombreItem": "NOTEBOOK",
+      "precioItem": 200,
+      "cantidadItem": 5,
+      "PrecioInventario": 1000
+    }
+  ]
+}

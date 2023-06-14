@@ -260,7 +260,8 @@ body {
   width: 400px;
   padding: 10px;
   margin: 10px;
-  box-shadow: 0px 0px 1px 0px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 3px 0px;
 }
 .contenedor .main .item .titulo-item {
   font-size: 30px;
@@ -273,17 +274,44 @@ body {
 }
 .contenedor .main .item .eliminar {
   border: 0;
+  width: 80px;
   padding: 10px;
   color: white;
+  font-weight: bold;
+  border-radius: 5px;
   background-color: red;
 }
 .contenedor .main .item .eliminar:hover {
   cursor: pointer;
+  background-color: rgb(158, 0, 0);
+}
+.contenedor .main .item .editar {
+  width: 80px;
+  border: 0;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  background-color: rgb(255, 51, 0);
+}
+.contenedor .main .item .editar:hover {
+  cursor: pointer;
+  background-color: rgb(179, 21, 1);
 }
 
 .numero-item {
   width: 100%;
-  color: gray;
   font-size: 45px;
   text-align: center;
+}
+
+.editar-nombre-item, .editar-precio-item, .editar-cantidad-item {
+  width: 50%;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+.text-input {
+  display: block;
+  width: 100%;
 }/*# sourceMappingURL=estilos.css.map */
