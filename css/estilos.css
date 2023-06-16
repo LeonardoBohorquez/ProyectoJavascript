@@ -314,4 +314,9 @@ body {
 .text-input {
   display: block;
   width: 100%;
+}
+
+.verde {
+  color: green;
+  font-weight: bold;
 }/*# sourceMappingURL=estilos.css.map */

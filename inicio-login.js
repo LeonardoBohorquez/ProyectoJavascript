@@ -1,5 +1,3 @@
-//Esperamos que cargue todo el DOM
-document.addEventListener('DOMContentLoaded', function() {
 //Creamos el array de usuarios
 let usuarios = [{
   usuario: 'coderhouse',
@@ -10,8 +8,6 @@ function registro() {
     let registroUsuario     = document.getElementById('registro-usuario');
     let registroContraseña  = document.getElementById('registro-contraseña');
     let repetirContraseña   = document.getElementById('repetir-contraseña');
-    let btnRegistrar        = document.getElementById('registrar');
-    let mensajeDos          = document.getElementById('mensaje-dos');
     let formularioRegistro  =  document.getElementById('formulario-registro')
     //Evento en el boton de registrar
     formularioRegistro.addEventListener('submit', function(e) {
@@ -44,7 +40,6 @@ function registro() {
       };
       //Agregar el nuevo usuario al array de usuarios
       usuarios.push(nuevoUsuario);
-      //Limpiar los campos del formulario
       //Creacion de usuario dem anera exitosa
       Swal.fire({
         position: 'center',
@@ -56,9 +51,10 @@ function registro() {
       })
         console.log(usuarios);
         formularioRegistro.reset();
+        registro.classList.remove('visible'); 
     });
   }
-  //Creamos una funcion para la animacion del cuadro de registro
+//Creamos una funcion para la animacion del cuadro de registro
 function animacionRegistro(){ 
       //Creamos las variables
         const btnRegistro   = document.getElementById('registro'); 
@@ -67,18 +63,14 @@ function animacionRegistro(){
       //Creamos un e vento para mostrar el cuadro de registro agregando una clase visible
         btnRegistro.addEventListener('click', function(){  
             registro.classList.add('visible'); 
-            let mensaje     = document.getElementById('mensaje');
-            mensaje.textContent = '';
-            mensaje.style.backgroundColor = "";
             formulario.reset();
-
         })
       //Creamos un evento para ocultar el cuadro de registro removiendo la clase visible
         btnVolver.addEventListener('click', function(){
             registro.classList.remove('visible'); 
         })
   }
-    //Creamos una funcion para el login
+//Creamos una funcion para el login
 function login(){
       //Creamos las variables
         let formulario  = document.getElementById('formulario');
@@ -121,6 +113,6 @@ function login(){
     registro();
     animacionRegistro();
     login();
-})
+
 
  

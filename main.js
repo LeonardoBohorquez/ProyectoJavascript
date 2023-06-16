@@ -2,13 +2,19 @@
 let inventario = JSON.parse(localStorage.getItem('inventario')) || []
 const formularioItem = document.getElementById('formulario-item')
 const contendorItems = document.getElementById('contenedor-items')
+id = inventario.length > 0 ? inventario[inventario.length - 1].id + 1 : 0;
 
-async function cargarItems(){
+async function cargarItems() {
   try {
-    const response = await fetch('items.json');
-    const data = await response.json();
-    inventario = data.items;
-    id = inventario.length > 0 ? inventario[inventario.length - 1].id + 1 : 0;
+    const inventarioLocalStorage = JSON.parse(localStorage.getItem('inventario'));
+    if (inventarioLocalStorage && inventarioLocalStorage.length > 0) {
+      inventario = inventarioLocalStorage;
+    } else {
+      const response = await fetch('items.json');
+      const data = await response.json();
+      inventario = data.items;
+    }
+    
     mostrarItems();
     numeroItems();
     InventarioLocalStore();
@@ -16,55 +22,76 @@ async function cargarItems(){
     console.log('Error al cargar los items del archivo JSON:', error);
   }
 }
-function animacionRegistro(){
-  const btnRegistro = document.getElementById('boton-registro')
-  const btnCerrar = document.getElementById('cerrar')
-  btnRegistro.addEventListener('click', ()=>{
-    formularioItem.style.top = '10%'
-  })
-  btnCerrar.addEventListener('click', ()=>{
-    formularioItem.style.top = '-50%'
-    formularioItem.reset();
-  })
-}
 function numeroItems(){
   const numeroItems = document.getElementById('numero-item')
   numeroItems.textContent = inventario.length
 }
-function crearItems(){
-  formularioItem.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    const nombreItem    = e.target.children['nombre-item'].value.toUpperCase();
-    const precioItem    = e.target.children['precio-item'].value
-    const cantidadItem  = e.target.children['cantidad-item'].value
-    const item = {
-      id,
-      nombreItem,
-      precioItem,
-      cantidadItem,
-      PrecioInventario: precioItem * cantidadItem
-    }
-    if(nombreItem != "" && precioItem != "" && cantidadItem != ""){
-      inventario.push(item)
-      id++
-      console.log(inventario.length)
-      console.log(inventario)
-      formularioItem.reset();
-      InventarioLocalStore();
-      mostrarItems();
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Item creado exitosamente',
-        showConfirmButton: false,
-        confirmButtonColor: '#3085d6',
-        timer: 1500
-      })
-
-    }
-   const primerInput = document.getElementById('nombre-item')
-         primerInput.focus();
+function registrarItem(){
+  const btnRegistro = document.getElementById('boton-registro')
+  btnRegistro.addEventListener('click', ()=>{
+    Swal.fire({
+      title: 'GUARDAR ITEM',
+      html: `
+        <div class="grupo-input">
+          <input type="text" class="editar-nombre-item" id="nombre-item" placeholder="Nombre del item">
+        </div>
+        <div class="grupo-input">
+        <input type="number" class="editar-precio-item" id="precio-item" placeholder="Precio del item">
+        </div>
+        <div class="grupo-input">
+        <input type="number" class="editar-cantidad-item" id="cantidad-item" placeholder="Cantidad del item">
+        </div>
+      `,
+      showCancelButton: true,
+      confirmButtonText: 'Guardar',
+      cancelButtonText: 'Cancelar',
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Obtener los valores editados del formulario
+        const nombreItem    = document.getElementById('nombre-item').value.toUpperCase()
+        const precioItem    = document.getElementById('precio-item').value
+        const cantidadItem  = document.getElementById('cantidad-item').value
+        //Objeto creado
+        const item = {
+          id,
+          nombreItem,
+          precioItem,
+          cantidadItem,
+          PrecioInventario: precioItem * cantidadItem
+        }
+        // Realizar las validaciones necesarias antes de guardar los cambios
+        if (nombreItem !== "" && precioItem !== "" && cantidadItem !== "") {
+          // Actualizar los datos del item en el inventario
+          inventario.push(item)
+          //incremento del id
+          id++
+          // Actualizar el inventario en localStorage
+          InventarioLocalStore()
+          // Volver a mostrar los items actualizados
+          mostrarItems()
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Item registrado exitosamente',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        } else {
+          console.log(nombreItem + precioItem + cantidadItem)
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Todos los campos deben estar completos',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      }
+    })
   })
+
 }
 function InventarioLocalStore(){
   localStorage.setItem('inventario', JSON.stringify(inventario))
@@ -76,9 +103,9 @@ function mostrarItems(){
     `
       <div class="item">
         <h2 class="titulo-item">${item.nombreItem}</h2>
-        <p><strong>Precio unitario: </strong>${item.precioItem}$</p>
+        <p><strong>Precio unitario: </strong><span class="verde">${item.precioItem}$</span></p>
         <p><strong>Cantidad: </strong>${item.cantidadItem}</p>
-        <p><strong>Precio total registrado: </strong>${item.PrecioInventario}$</p>
+        <p><strong>Precio total registrado: </strong"><span class="verde">${item.PrecioInventario}$</span></p>
         <button type="button" class="eliminar" onclick="eliminarItem(${index})">Eliminar</button>
         <button type="button" class="editar" onclick="editarItem(${index})">Editar</button>
       </div>
@@ -104,7 +131,7 @@ function eliminarItem(index) {
         confirmButtonColor: '#3085d6',
       })
       inventario.splice(index, 1);
-      InventarioLocalStore();
+      InventarioLocalStore();      
       id--
       mostrarItems();
       numeroItems()
@@ -113,9 +140,6 @@ function eliminarItem(index) {
 }
 function editarItem(index){
   const item = inventario[index]; // Obtener el item del inventario por su índice
-  // Realizar acciones para mostrar un formulario o ventana modal de edición
-  // y permitir al usuario modificar los datos del item
-  
   // Ejemplo: Mostrar una ventana modal con un formulario de edición
   Swal.fire({
     title: 'Editar Item',
@@ -141,8 +165,8 @@ function editarItem(index){
   }).then((result) => {
     if (result.isConfirmed) {
       // Obtener los valores editados del formulario
-      const nombreItemEditado = document.getElementById('editar-nombre-item').value;
-      const precioItemEditado = document.getElementById('editar-precio-item').value;
+      const nombreItemEditado   = document.getElementById('editar-nombre-item').value;
+      const precioItemEditado   = document.getElementById('editar-precio-item').value;
       const cantidadItemEditado = document.getElementById('editar-cantidad-item').value;
 
       // Realizar las validaciones necesarias antes de guardar los cambios
@@ -251,6 +275,7 @@ function buscarItem(){
                   <p><strong>Cantidad: </strong>${item.cantidadItem}</p>
                   <p><strong>Precio total registrado: </strong>${item.PrecioInventario}$</p>
                   <button type="button" class="eliminar" onclick="eliminarItem(${index})">Eliminar</button>
+                  <button type="button" class="editar" onclick="editarItem(${index})">Editar</button>
                 </div>
               `;
           });
@@ -264,11 +289,10 @@ function buscarItem(){
     });
   });
 }
-
-cargarItems();
-animacionRegistro()
+cargarItems()
+mostrarItems()
+registrarItem()
 numeroItems()
-crearItems()
 buscarItem()
 mostrarTodo()
 eliminarTodo()
