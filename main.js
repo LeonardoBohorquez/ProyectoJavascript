@@ -33,13 +33,18 @@ function registrarItem(){
       title: 'GUARDAR ITEM',
       html: `
         <div class="grupo-input">
-          <input type="text" class="editar-nombre-item" id="nombre-item" placeholder="Nombre del item">
+          <label for="nombre-item">Nombre: </label>
+          <input type="text" class="editar-nombre-item" id="nombre-item">
         </div>
+
         <div class="grupo-input">
-        <input type="number" class="editar-precio-item" id="precio-item" placeholder="Precio del item">
+          <label for="precio-item">Precio: </label>
+          <input type="number" class="editar-precio-item" id="precio-item">
         </div>
+
         <div class="grupo-input">
-        <input type="number" class="editar-cantidad-item" id="cantidad-item" placeholder="Cantidad del item">
+          <label for="precio-item">Cantidad: </label>
+          <input type="number" class="editar-cantidad-item" id="cantidad-item">
         </div>
       `,
       showCancelButton: true,
@@ -104,7 +109,7 @@ function mostrarItems(){
       <div class="item">
         <h2 class="titulo-item">${item.nombreItem}</h2>
         <p><strong>Precio unitario: </strong><span class="verde">${item.precioItem}$</span></p>
-        <p><strong>Cantidad: </strong>${item.cantidadItem}</p>
+        <p><strong>Cantidad: </strong><span class="morado">${item.cantidadItem}</span></p>
         <p><strong>Precio total registrado: </strong"><span class="verde">${item.PrecioInventario}$</span></p>
         <button type="button" class="eliminar" onclick="eliminarItem(${index})">Eliminar</button>
         <button type="button" class="editar" onclick="editarItem(${index})">Editar</button>
@@ -271,9 +276,9 @@ function buscarItem(){
               `
                 <div class="item">
                   <h2 class="titulo-item">${item.nombreItem}</h2>
-                  <p><strong>Precio unitario: </strong>${item.precioItem}$</p>
-                  <p><strong>Cantidad: </strong>${item.cantidadItem}</p>
-                  <p><strong>Precio total registrado: </strong>${item.PrecioInventario}$</p>
+                  <p><strong>Precio unitario: </strong><span class="verde">${item.precioItem}$</span></p>
+                  <p><strong>Cantidad: </strong><span class="morado">${item.cantidadItem}</span></p>
+                  <p><strong>Precio total registrado: </strong><span class="verde">${item.PrecioInventario}$</span></p>
                   <button type="button" class="eliminar" onclick="eliminarItem(${index})">Eliminar</button>
                   <button type="button" class="editar" onclick="editarItem(${index})">Editar</button>
                 </div>
@@ -289,6 +294,7 @@ function buscarItem(){
     });
   });
 }
+
 cargarItems()
 mostrarItems()
 registrarItem()

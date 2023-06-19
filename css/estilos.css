@@ -310,13 +310,28 @@ body {
   margin-bottom: 5px;
   padding: 5px;
 }
+.editar-nombre-item:focus, .editar-precio-item:focus, .editar-cantidad-item:focus {
+  outline: none;
+}
 
-.text-input {
-  display: block;
-  width: 100%;
+.grupo-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .verde {
   color: green;
   font-weight: bold;
+}
+
+.morado {
+  color: rgb(252, 0, 252);
+  font-weight: bold;
+}
+
+label {
+  width: 80px;
+  display: block;
+  text-align: left;
 }/*# sourceMappingURL=estilos.css.map */

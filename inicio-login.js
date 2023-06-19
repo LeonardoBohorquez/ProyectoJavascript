@@ -25,7 +25,7 @@ function registro() {
         return;
       }
       //Validacion de coincidencia de contraseña
-      if (registroContraseñaValor !== repetirContraseñaValor) {
+      else if (registroContraseñaValor !== repetirContraseñaValor) {
         Swal.fire({
           icon: 'error',
           title: 'Las contraseñas no coinciden',
@@ -51,9 +51,10 @@ function registro() {
       })
         console.log(usuarios);
         formularioRegistro.reset();
+        const registro      = document.getElementById('cuadro-registro'); 
         registro.classList.remove('visible'); 
     });
-  }
+}
 //Creamos una funcion para la animacion del cuadro de registro
 function animacionRegistro(){ 
       //Creamos las variables
@@ -69,14 +70,13 @@ function animacionRegistro(){
         btnVolver.addEventListener('click', function(){
             registro.classList.remove('visible'); 
         })
-  }
+}
 //Creamos una funcion para el login
 function login(){
       //Creamos las variables
         let formulario  = document.getElementById('formulario');
         let usuario     = document.getElementById('usuario');
         let contraseña  = document.getElementById('contraseña');
-        let mensaje     = document.getElementById('mensaje');
       //Agregamos un evento para el formulario
         formulario.addEventListener('submit', function(event) {
           event.preventDefault();
@@ -109,7 +109,7 @@ function login(){
             formulario.reset();
           }
         });
-      }
+}
     registro();
     animacionRegistro();
     login();
