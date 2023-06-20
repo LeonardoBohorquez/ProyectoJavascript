@@ -40,7 +40,7 @@ function registro() {
       };
       //Agregar el nuevo usuario al array de usuarios
       usuarios.push(nuevoUsuario);
-      //Creacion de usuario dem anera exitosa
+      //Creacion de usuario de manera exitosa
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -49,7 +49,6 @@ function registro() {
         confirmButtonColor: '#3085d6',
         timer: 2000
       })
-        console.log(usuarios);
         formularioRegistro.reset();
         const registro      = document.getElementById('cuadro-registro'); 
         registro.classList.remove('visible'); 
@@ -110,9 +109,9 @@ function login(){
           }
         });
 }
-    registro();
-    animacionRegistro();
-    login();
+registro();
+animacionRegistro();
+login();
 
 
  

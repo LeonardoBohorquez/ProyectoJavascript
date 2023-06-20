@@ -3,23 +3,23 @@
     {
       "id": 0,
       "nombreItem": "TELEVISION",
-      "precioItem": 50,
-      "cantidadItem": 5,
-      "PrecioInventario": 250
+      "precioItem": 350,
+      "cantidadItem": 20,
+      "PrecioInventario": 7000
     },
     {
       "id": 1,
       "nombreItem": "MESA",
-      "precioItem": 10,
-      "cantidadItem": 5,
-      "PrecioInventario": 50
+      "precioItem": 150,
+      "cantidadItem": 20,
+      "PrecioInventario": 3000
     },
     {
       "id": 2,
       "nombreItem": "SILLA",
-      "precioItem": 5,
+      "precioItem": 55,
       "cantidadItem": 10,
-      "PrecioInventario": 50
+      "PrecioInventario": 550
     },
     {
       "id": 3,
